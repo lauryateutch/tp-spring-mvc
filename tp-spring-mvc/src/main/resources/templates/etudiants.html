@@ -1,0 +1,131 @@
+<!--<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+
+<head>
+    <meta charset="utf-8"/>
+    <title>Liste des etudiants</title>
+</head>
+<body>
+<table>
+<thead>
+<tr>
+    <th>ID </th>
+    <th>Nom</th>
+    <th>Date</th>
+    <th>Email</th>
+    <th>Photo</th>
+</tr>
+</thead>
+    <tbody>
+    <tr th:each="e:${etudiants}">
+        <td th: text="${e.id}"></td>
+        <td th: text="${e.nom}"></td>
+        <td th: text="${e.dateNaissance}"></td>
+        <td th: text="${e.email}"></td>
+        <td th: text="${e.photo}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>-->
+
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta name="viewport" content="width = device-width, initial-scale = 1, shrink-to-fit = no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+
+    <title>liste des étudiants</title>
+</head>
+
+<body>
+
+<div class="container spacer">
+    <form th:action="@{Index}" method="get">
+        <div class="form-group">
+            <label> Mot Clé:</label>
+            <input type="text" name=" motClé"/>
+            <button type="submit">Chercher</button>
+
+
+        </div>
+
+
+    </form>
+</div>
+<div class="container">
+    <nav class = "navbar navbar-expand-sm navbar-dark bg-secondary">
+        <a class = "navbar-brand" href = "homepage-static.html"> Liste des étudiants</a>
+        <button class = "navbar-toggler" type = "button" data-toggle = "collapse"
+                data-target = "#navbarSupportedContent"
+                aria-controls = "navbarSupportedContent" aria-expanded = "false"
+                aria-label = "Toggle navigation">
+
+            <span class = "navbar-toggler-icon"></span>
+        </button>
+
+     <!--   <div class = "collapse navbar-collapse" id = "navbarSupportedContent">
+            <ul class = "navbar-nav mr-auto">
+                <li class = "nav-item">
+                    <a class = "nav-link" href = "homepage-static.html">Home</a>
+                </li>
+                <li class = "nav-item active">
+                    <a class = "nav-link" href = "watchlist.html">Watchlist</a>
+                </li>
+                <li class = "nav-item ">
+                    <a class = "nav-link" href = "watchlistItemForm.html">Submit an item</a>
+                </li>
+            </ul>
+
+        </div>-->
+    </nav>
+    <h2  class = "mt-4">liste des étudiants</h2>
+    <table class="table">
+        <thead class = "thead-light">
+        <tr>
+            <th class="text-left">ID</th>
+            <th class="text-left">Nom</th>
+            <th class="text-left">DateNaissance</th>
+            <th class="text-left">email</th>
+            <th class="text-left">photo</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="e:${pageEtudiants.content}">
+            <td th:text=" ${e.id}"></td>
+            <td th:text=" ${e.nom}"></td>
+            <td th:text=" ${e.dateNaissance}"></td>
+            <td th:text=" ${e.email}"></td>
+            <td th:text=" ${e.photo}"></td>
+
+            <!--<td><a href="#" class="btn btn-info" role="button" th:href="@{/watchlistItemForm(id=${watchlistItem.id})}">Update</a></td>-->
+        </tr>
+
+        </tbody>
+    </table>
+    <hr/>
+    <div >
+     <!--   <div>Number of movies to watch: <span th:text="${numberOfMovies}"></span>    </div>-->
+    </div>
+
+</div>
+
+<div class="container">
+    <ul class="nav nav-pills" >
+     <li th:each="p:${pages}" th:class="${p==pageCourante}?active:''"  >
+        <a th:text="${p}" th:href="@{Index(page=${p})}"></a>
+     </li>
+
+    </ul>
+
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+</body>
+</html>
+
